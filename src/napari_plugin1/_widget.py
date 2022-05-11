@@ -9,6 +9,28 @@ Replace code below according to your needs.
 from magicgui import magic_factory
 from qtpy.QtWidgets import QHBoxLayout, QPushButton, QWidget
 
+from enum import Enum
+from subprocess import call
+import numpy
+import napari
+from napari.types import ImageData
+from magicgui import magic_factory, magicgui
+from skimage import data
+import sys
+
+import numpy
+#!pip install focal_loss
+
+import numpy as np
+from skimage.io import imread, imshow, imread_collection, concatenate_images
+from skimage.transform import resize
+from napari.qt.threading import thread_worker
+from napari.utils.notifications import show_info
+from skimage.io import imread
+from napari_plugin_engine import napari_hook_implementation
+from enum import Enum
+from napari.utils.notifications import show_info
+
 
 class ExampleQWidget(QWidget):
     # your QWidget.__init__ can optionally request the napari viewer instance
