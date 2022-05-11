@@ -17,12 +17,9 @@ contributions:
     - id: napari-plugin1.make_qwidget
       python_name: napari_plugin1._widget:ExampleQWidget
       title: Make example QWidget
-    - id: napari-plugin1.make_magic_widget
-      python_name: napari_plugin1._widget:example_magic_widget
-      title: Make example magic widget
     - id: napari-plugin1.make_func_widget
-      python_name: napari_plugin1._widget:example_function_widget
-      title: Make example function widget 
+      python_name: napari_plugin1._widget:do_model_segmentation
+      title: Otsu segmentation
   readers:
     - command: napari-plugin1.get_reader
       accepts_directories: false
@@ -41,8 +38,6 @@ contributions:
   widgets:
     - command: napari-plugin1.make_qwidget
       display_name: Example QWidget
-    - command: napari-plugin1.make_magic_widget
-      display_name: Example Magic Widget
     - command: napari-plugin1.make_func_widget
-      autogenerate: true
-      display_name: Example Function Widget 
+      display_name: Do Otsu
+ 

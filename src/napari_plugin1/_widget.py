@@ -29,13 +29,18 @@ class ExampleQWidget(QWidget):
         print("napari has", len(self.viewer.layers), "layers")
 
 
-@magic_factory
-def example_magic_widget(img_layer: "napari.layers.Image"):
-    print(f"you have selected {img_layer}")
+def do_otsu(layer: ImageData) -> ImageData:
+    
+    import cv2
+    img = cv2.cvtColor(layer, cv2.COLOR_BGR2GRAY)
+    ret, thresh1 = cv2.threshold(img, 120, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+    return thresh1
 
-
-# Uses the `autogenerate: true` flag in the plugin manifest
-# to indicate it should be wrapped as a magicgui to autogenerate
-# a widget.
-def example_function_widget(img_layer: "napari.layers.Image"):
-    print(f"you have selected {img_layer}")
+@magic_factory(call_button="Run",radio_option={"widget_type": "RadioButtons",
+                        "orientation": "vertical",
+                        "choices": [("Otsu",1), ("Our model",2)]})
+def do_model_segmentation(
+    layer: ImageData, radio_option=1
+    ) -> ImageData:
+    show_info('Succes !')
+    return do_otsu(layer)
